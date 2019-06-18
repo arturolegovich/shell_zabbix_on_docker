@@ -5,6 +5,12 @@ echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /usr/lib/sysctl.d/01-disable-ipv6.co
 sed -i "s|.*#AddressFamily.*|AddressFamily inet|g" /etc/ssh/sshd_config
 systemctl restart sshd
 yum -y update
+#reboot
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+yum install https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+yum --enablerepo=elrepo-kernel install kernel-lt
+#yum --enablerepo=elrepo-kernel install kernel-ml
+#reboot
 yum install -y yum-utils net-tools device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum-config-manager --enable docker-ce-edge
