@@ -30,6 +30,6 @@ docker pull zabbix/zabbix-agent:latest
 docker pull monitoringartist/dockbix-xxl:latest
 docker pull phpmyadmin/phpmyadmin:4.6
 docker pull monitoringartist/grafana-xxl:latest
-adduser -rlm mysql -s /sbin/nologin -d /var/lib/mysql
-mkdir /backups && chown mysql:mysql /backups
+mkdir /var/lib/mysql && chown 999:999 /var/lib/mysql
+mkdir /backups && chown 999:999 /backups
 mkdir /var/lib/grafana
