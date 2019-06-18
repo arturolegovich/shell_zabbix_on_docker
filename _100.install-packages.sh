@@ -20,7 +20,7 @@ systemctl start docker
 wget dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm --no-check-certificate
 rpm -ihv epel-release-7-11.noarch.rpm
 yum install -y htop
-rm epel-release-7-11.noarch.rpm
+rm -f epel-release-7-11.noarch.rpm
 #wget https://94.181.94.215/files/zabbix_dump.7z --no-check-certificate
 docker pull percona:latest
 docker pull zabbix/zabbix-agent:latest
