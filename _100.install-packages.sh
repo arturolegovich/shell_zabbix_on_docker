@@ -21,6 +21,9 @@ wget dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.
 rpm -ihv epel-release-7-11.noarch.rpm
 yum install -y htop
 rm -f epel-release-7-11.noarch.rpm
+docker volume create portainer_data
+docker run -d -p 9000:9000 --name portainer --restart unless-stopped -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+#docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 #wget https://94.181.94.215/files/zabbix_dump.7z --no-check-certificate
 docker pull percona:latest
 docker pull zabbix/zabbix-agent:latest
