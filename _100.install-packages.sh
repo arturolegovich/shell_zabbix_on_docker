@@ -2,6 +2,8 @@
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /usr/lib/sysctl.d/01-disable-ipv6.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /usr/lib/sysctl.d/01-disable-ipv6.conf
 echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /usr/lib/sysctl.d/01-disable-ipv6.conf
+sed -i "s|.*#AddressFamily.*|AddressFamily inet|g" /etc/ssh/sshd_config
+systemctl restart sshd
 yum -y update
 yum install -y yum-utils net-tools device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
