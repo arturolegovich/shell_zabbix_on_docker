@@ -16,4 +16,4 @@ docker run \
     --env="MYSQL_USER=zabbix" \
     --env="MYSQL_PASSWORD=zabbix" \
     --restart unless-stopped \
-    percona:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    percona:5.6.44 --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
