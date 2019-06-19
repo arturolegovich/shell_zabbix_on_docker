@@ -36,7 +36,7 @@ docker volume create portainer_data
 docker run -d -p 9000:9000 --name portainer --restart unless-stopped -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 #docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 #wget https://94.181.94.215/files/zabbix_dump.7z --no-check-certificate
-docker pull percona:latest
+docker pull percona:5.6.44
 docker pull zabbix/zabbix-agent:latest
 docker pull monitoringartist/dockbix-xxl:latest
 docker pull phpmyadmin/phpmyadmin:4.6
