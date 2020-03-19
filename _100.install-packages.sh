@@ -28,8 +28,8 @@ systemctl enable ntpd && systemctl start ntpd
 yum install -y docker-ce wget
 systemctl enable docker
 systemctl start docker
-wget dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm --no-check-certificate
-rpm -ihv epel-release-7-11.noarch.rpm
+wget dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-12.noarch.rpm --no-check-certificate
+rpm -ihv epel-release-7-12.noarch.rpm
 yum install -y htop
 rm -f epel-release-7-11.noarch.rpm
 docker volume create portainer_data
