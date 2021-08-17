@@ -9,6 +9,8 @@ yum -y update
 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 yum -y install https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 yum --enablerepo=elrepo-kernel install -y kernel-lt
+# set default kernel-lt on boot
+grub2-set-default 0
 #yum --enablerepo=elrepo-kernel install kernel-ml
 #reboot
 yum -y install yum-utils net-tools device-mapper-persistent-data lvm2
