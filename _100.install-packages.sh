@@ -7,11 +7,11 @@ systemctl restart sshd
 yum -y update
 #reboot
 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-yum install https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+yum -y install https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 yum --enablerepo=elrepo-kernel install kernel-lt
 #yum --enablerepo=elrepo-kernel install kernel-ml
 #reboot
-yum install -y yum-utils net-tools device-mapper-persistent-data lvm2
+yum -y install yum-utils net-tools device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum-config-manager --enable docker-ce-edge
 # set timezone,date,time
