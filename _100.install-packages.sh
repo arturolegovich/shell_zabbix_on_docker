@@ -3,20 +3,22 @@ echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /usr/lib/sysctl.d/01-disable-ipv6.c
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /usr/lib/sysctl.d/01-disable-ipv6.conf
 echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /usr/lib/sysctl.d/01-disable-ipv6.conf
 sed -i "s|.*#AddressFamily.*|AddressFamily inet|g" /etc/ssh/sshd_config
+## set SELinux to disabled
+sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 systemctl restart sshd
 yum -y update
 #reboot
 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 yum -y install https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 yum --enablerepo=elrepo-kernel install -y kernel-lt
-# set default kernel-lt on boot
+## set default boot kernel to kernel-lt
 grub2-set-default 0
 #yum --enablerepo=elrepo-kernel install kernel-ml
 #reboot
 yum -y install yum-utils net-tools device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum-config-manager --enable docker-ce-edge
-# set timezone,date,time
+## set timezone,date,time
 timedatectl set-timezone Europe/Samara
 yum install -y ntp ntpdate p7zip
 sed -i "s|.*ntp.org.*|0.ru.pool.ntp.org|g" /etc/ntp/step-tickers
